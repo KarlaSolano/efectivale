@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Información del perfil') }}
+            {{ __('Profile Information') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Actualiza tu información") }}
+            {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
 
@@ -22,6 +22,7 @@
             <x-text-input id="names" name="names" type="text" class="mt-1 block w-full" :value="old('names', $user->names)" required autofocus autocomplete="names" />
             <x-input-error class="mt-2" :messages="$errors->get('names')" />
         </div>
+
         <div>
             <x-input-label for="surnames" :value="__('Apellidos')" />
             <x-text-input id="surnames" name="surnames" type="text" class="mt-1 block w-full" :value="old('surnames', $user->surnames)" required autofocus autocomplete="surnames" />
@@ -29,23 +30,23 @@
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Correo electrónico')" />
+            <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
-                        {{ __('Tu correo ha sido verificado.') }}
+                        {{ __('Your email address is unverified.') }}
 
                         <button form="send-verification" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                            {{ __('Clic para reenviar la verificación a tu correo.') }}
+                            {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
 
                     @if (session('status') === 'verification-link-sent')
                         <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                            {{ __('Una verificación se ha enviado a tu correo.') }}
+                            {{ __('A new verification link has been sent to your email address.') }}
                         </p>
                     @endif
                 </div>
@@ -53,7 +54,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Guardar') }}</x-primary-button>
+            <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -62,7 +63,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Guardo y Actualizado correctamente.') }}</p>
+                >{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>

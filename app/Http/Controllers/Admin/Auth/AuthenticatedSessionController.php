@@ -47,7 +47,7 @@ class AuthenticatedSessionController extends Controller
     }
 
     public function dashboard(){
-        return view('Admin/Dashboard', [
+        return view('admin.dashboard', [
             'auth' => [
                 'user' => Auth::guard('admin')->user(),
             ],

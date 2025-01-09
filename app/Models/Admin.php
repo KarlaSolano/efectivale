@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Authenticatable
 {
     use HasFactory, Notifiable;
-    protected $guard = "admin";
+    protected $guard = 'admin';
 
     protected $fillable = [
         'names',
@@ -32,4 +32,6 @@ class Admin extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected $table = 'admins';
 }
